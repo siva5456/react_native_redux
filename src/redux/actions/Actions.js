@@ -1,11 +1,10 @@
-// second
-import { addItem } from "../ActionTypes"
-import { removeItem } from "../ActionTypes"
+// first
+
 
 
 export const AddItemToCart = (data) => ({
 
-    type: addItem,
+    type: "addItem",
     payload: data,
 
 }
@@ -13,7 +12,7 @@ export const AddItemToCart = (data) => ({
 
 export const RemoveItemFromCart = (index) => ({
 
-    type: removeItem,
+    type: "removeItem",
     payload: index,
 
 }

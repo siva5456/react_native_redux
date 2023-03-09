@@ -1,4 +1,4 @@
-// 4th
+// 3rd
 import { configureStore } from "@reduxjs/toolkit"
 import { Reducers } from "../reducer/Reducers";
 

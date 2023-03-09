@@ -9,15 +9,14 @@ function Products({ navigation }) {
     let [myProducts, setMyProducts] = useState(null)
     let [count, setCount] = useState(0)
 
-
     const dispatch = useDispatch()
 
-    const d = useSelector(state => state)
+    const cartItems = useSelector(state => state)
     useEffect(() => {
-        if (d) {
-            setCount(d.length)
+        if (cartItems) {
+            setCount(cartItems.length)
         }
-    }, [d])
+    }, [cartItems])
 
 
     useEffect(() => {
@@ -62,9 +61,6 @@ function Products({ navigation }) {
 
                 </View>
 
-
-
-
                 {
                     myProducts && (
                         <FlatList
@@ -107,21 +103,7 @@ function Products({ navigation }) {
                                             onPress={() => (dispatch(AddItemToCart(item)))}
                                             title='add to cart'
                                         />
-                                        {/* <TouchableOpacity onPress={() => (dispatch(AddItemToCart(item)))}
-                                        style={{
-                                            backgroundColor: "green",
-                                            height: 50,
-                                            width: 100,
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            borderRadius: 10,
-                                            margin: 10,
-                                            marginLeft: 0
-                                        }} >
-                                        <Text style={{ color: "white", fontSize: 15 }}>Add to cart</Text>
-                                    </TouchableOpacity>
- */}
-
+                                       
                                     </View>
                                 )
                             }}

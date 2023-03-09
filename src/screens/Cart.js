@@ -13,7 +13,7 @@ function Cart({ navigation }) {
     // console.log(y);
 
     const dispatch = useDispatch();
-    const d = useSelector(state => state)
+    const cartItems = useSelector(state => state)
     const [myProducts, setMyProducts] = useState([])
     const [totalCost, setTotalCost] = useState(0)
     const [boolean, setBoleean] = useState(false)
@@ -21,23 +21,23 @@ function Cart({ navigation }) {
 
     useEffect(() => {
 
-        if (d) {
-            setBoleean(Boolean(d.length))
+        if (cartItems) {
+            setBoleean(Boolean(cartItems.length))
         }
 
-        setMyProducts(d)
+        setMyProducts(cartItems)
 
         let cost = Number(0)
-        if (d) {
-            for (const i in d) {
-                cost += Number(d[i].price);
+        if (cartItems) {
+            for (const i in cartItems) {
+                cost += Number(cartItems[i].price);
 
             }
             setTotalCost(Math.floor(cost))
 
 
         }
-    }, [d])
+    }, [cartItems])
     let handleMyBooking = () => {
        alert(`your items are booked today ${new Date().toLocaleDateString()}.will be delevered within 3 working days`)
     }

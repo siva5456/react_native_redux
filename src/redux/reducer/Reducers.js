@@ -1,16 +1,14 @@
-// 3rd
-import { addItem } from "../ActionTypes"
-import { removeItem } from "../ActionTypes"
+// second
 
 
 export const Reducers = (state =[], action) => {
 
     switch (action.type) {
 
-        case addItem:
+        case "addItem":
                return [...state, action.payload];
                  
-        case removeItem:
+        case "removeItem":
         return state.filter((item,index)=>{ return index!==action.payload})
       
         default:
