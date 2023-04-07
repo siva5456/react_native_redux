@@ -12,7 +12,7 @@ export const Reducers = (state =[], action) => {
         return state.filter((item,index)=>{ return index!==action.payload})
       
         default:
-            return;
+            return state;
     }
 
 }
