@@ -1,7 +1,7 @@
 // second
 
 
-export const Reducers = (state =[], action) => {
+export const Reducer = (state =[], action) => {
 
     switch (action.type) {
 

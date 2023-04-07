@@ -21,7 +21,9 @@ function Products({ navigation }) {
 
   const dispatch = useDispatch();
 
-  const cartItems = useSelector((state) => state);
+  const cartItems = useSelector((state) => state.Reducer);
+  const theme = useSelector(({ ThemeReducer }) => ThemeReducer);
+
   useEffect(() => {
     if (cartItems) {
       setCount(cartItems.length);
@@ -33,7 +35,7 @@ function Products({ navigation }) {
       try {
         let { data } = await axios.get("https://fakestoreapi.com/products");
         setMyProducts(data);
-        // console.log('====================================');
+        // console.log('===================================='); rgba(0, 0, 0, 0.844)
         // console.log(data);
         // console.log('====================================');
       } catch (e) {
@@ -45,14 +47,14 @@ function Products({ navigation }) {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={{ flex: 1, backgroundColor: "#e4e7ed" }}>
+      <View style={{ flex: 1, backgroundColor:theme? '#000000': "#e4e7ed" }}>
         <View
           style={{
             flex: 0.1,
             alignItems: "center",
             justifyContent: "space-between",
             flexDirection: "row",
-            backgroundColor: "#fff",
+            backgroundColor:theme? '#28282B': "#fff" ,
             paddingHorizontal: 1,
             marginBottom: 10,
           }}
@@ -62,7 +64,7 @@ function Products({ navigation }) {
               alignItems: "center",
               justifyContent: "space-between",
               flexDirection: "row",
-              backgroundColor: "#fff",
+              backgroundColor: theme? '#28282B': "#fff" ,
             }}
           >
             <TouchableOpacity
@@ -70,15 +72,15 @@ function Products({ navigation }) {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "#fff",
+                backgroundColor: theme? '#28282B': "#fff" ,
                 height: 50,
                 width: 50,
                 borderRadius: 50,
               }}
             >
-              <Text style={{ color: "black", fontSize: 23 }}>☰</Text>
+              <Text style={{ color: theme? '#fff': "#28282B" , fontSize: 23 }}>☰</Text>
             </TouchableOpacity>
-            <Text style={{ color: "black", fontSize: 23 }}>Products</Text>
+            <Text style={{ color:theme? '#fff': "#28282B" ,fontSize: 23 }}>Products</Text>
           </View>
 
           <TouchableOpacity
@@ -86,14 +88,14 @@ function Products({ navigation }) {
             style={{
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "yellow",
+              backgroundColor:theme? 'grey': "rgb(220, 236, 249)" ,
               height: 50,
               width: 50,
               borderRadius: 50,
               margin: 10,
             }}
           >
-            <Text style={{ color: "black", fontSize: 23 }}>{count}</Text>
+            <Text style={{ color:theme ? "#fff": "black", fontSize: 23 }}>{count}</Text>
           </TouchableOpacity>
         </View>
 
@@ -103,7 +105,7 @@ function Products({ navigation }) {
             alignItems: "center",
             justifyContent: "space-between",
             flexDirection: "row",
-            backgroundColor: "#e4e7ed",
+            backgroundColor:theme? 'rgba(0, 0, 0, 0.144)': "#e4e7ed"
           }}
         >
           {myProducts && (
@@ -113,7 +115,7 @@ function Products({ navigation }) {
                 return (
                   <View
                     style={{
-                      backgroundColor: "#fff",
+                      backgroundColor:theme? '#28282B': "#fff",
                       padding: 10,
                       marginVertical:5,
                       marginHorizontal:10,
@@ -138,12 +140,12 @@ function Products({ navigation }) {
                         }}
                       />
 
-                      <Text style={{ color: "black", fontSize: 23 }}>
+                      <Text style={{ color:theme? '#fff': "black", fontSize: 23 }}>
                         Price: ${Math.floor(item.price)}
                       </Text>
                     </View>
                     <Text
-                      style={{ color: "black", fontSize: 20, marginBottom: 20 }}
+                      style={{ color:theme? '#fff': "black",fontSize: 20, marginBottom: 20 }}
                     >
                       {item.title}
                     </Text>

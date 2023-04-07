@@ -9,3 +9,7 @@ export const RemoveItemFromCart = (index) => ({
   type: "removeItem",
   payload: index,
 });
+export const changeTheme=(type)=>({
+  type:'changeTheme',
+  payload:type
+})

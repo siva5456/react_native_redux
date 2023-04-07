@@ -1,8 +1,10 @@
 // 3rd
-import { configureStore } from "@reduxjs/toolkit"
-import { Reducers } from "../reducer/Reducers";
+import { configureStore,combineReducers } from "@reduxjs/toolkit"
+import { Reducer } from "../reducer/Reducer";
+import { ThemeReducer } from "../reducer/ThemeReducer";
 
-export const myStore=configureStore({reducer:Reducers});
+const totalReducers=combineReducers({Reducer,ThemeReducer})
+export const myStore=configureStore({reducer:totalReducers});
 
 
 

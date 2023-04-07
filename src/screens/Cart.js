@@ -23,7 +23,9 @@ function Cart({ navigation }) {
   // console.log(y);
 
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state);
+  const cartItems = useSelector((state) => state.Reducer);
+  const theme = useSelector(({ ThemeReducer }) => ThemeReducer);
+
   const [myProducts, setMyProducts] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
   const [boolean, setBoleean] = useState(false);
@@ -51,17 +53,17 @@ function Cart({ navigation }) {
 
   return (
     <>
-      <View style={{ flex: 1, backgroundColor: "#e4e7ed" }}>
+      <View style={{ flex: 1, backgroundColor:theme? '#000000': "#e4e7ed", }}>
         {!boolean && (
           <View
             style={{
               flex: 1,
-              backgroundColor: "#e4e7ed",
+              backgroundColor: theme? '#000000': "#e4e7ed" ,
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <Text style={{ color: "black", fontSize: 20 }}>
+            <Text style={{ color:theme? '#fff': "#000", fontSize: 20 }}>
               Your Cart is Empty
             </Text>
           </View>
@@ -70,7 +72,7 @@ function Cart({ navigation }) {
           <View
             style={{
               flex: 1,
-              backgroundColor: "#e4e7ed",
+              backgroundColor:theme? '#000000': "#e4e7ed" ,
             }}
           >
             <FlatList
@@ -80,7 +82,7 @@ function Cart({ navigation }) {
                   <View
                     style={{
                       padding: 10,
-                      backgroundColor: "#fff",
+                      backgroundColor: theme? '#28282B': "#fff",
 
                       margin: 10,
                       borderRadius: 10,
@@ -103,12 +105,12 @@ function Cart({ navigation }) {
                           width: 70,
                         }}
                       />
-                      <Text style={{ color: "black", fontSize: 23 }}>
+                      <Text style={{ color:theme? '#fff': "#000" , fontSize: 23 }}>
                         Price: ${Math.floor(item.price)}
                       </Text>
                     </View>
                     <Text
-                      style={{ color: "black", fontSize: 20, marginBottom: 20 }}
+                      style={{ color: theme? '#fff': "#000" , fontSize: 20, marginBottom: 20 }}
                     >
                       {item.title}
                     </Text>
@@ -126,13 +128,12 @@ function Cart({ navigation }) {
 
             <View
               style={{
-                backgroundColor: "#fff",
+                backgroundColor: theme? '#28282B': "#fff",
                 alignItems: "center",
-                justifyContent: "center",
-                paddingBottom: 1,
+               
               }}
             >
-              <Text style={{ color: "black", fontSize: 20, margin: 5 }}>
+              <Text style={{ color:theme? '#fff': "#000" , fontSize: 20, margin: 5 }}>
                 Total Cost: ${Math.floor(totalCost)}
               </Text>
 
@@ -144,9 +145,9 @@ function Cart({ navigation }) {
                   alignItems: "center",
                   width: Math.floor(screenDimensions.width) - 5,
                   alignItems: "center",
-                  marginBottom: 1,
                   justifyContent: "center",
                   borderRadius: 8,
+                  marginBottom:2,
                 }}
               >
                 <Text
